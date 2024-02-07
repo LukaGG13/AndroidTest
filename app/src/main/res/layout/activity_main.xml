@@ -42,5 +42,13 @@
             android:layout_height="wrap_content"
             android:onClick="setOnClickListener2"
             android:text="DOWN" />
+
+        <EditText
+            android:id="@+id/plainTextName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Name" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

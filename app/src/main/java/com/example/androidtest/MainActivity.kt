@@ -1,5 +1,6 @@
 package com.example.androidtest
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -48,6 +49,13 @@ class MainActivity : AppCompatActivity() {
     fun setOnClickListener1(view: View){
         Log.i("button","tipkica")
         text.text = (text.text.toString().toInt() + 1).toString()
+        if(text.text.toString().toInt() == 10){
+            val myIntent = Intent(this, SuccessActivity::class.java).apply{
+                putExtra("name",findViewById<TextView>(R.id.plainTextName).text.toString())
+            }
+            text.text = "0"
+            startActivity(myIntent)
+        }
     }
 
     fun setOnClickListener2(view: View){
@@ -56,17 +64,18 @@ class MainActivity : AppCompatActivity() {
             text.text = (text.text.toString().toInt() - 1).toString()
     }
 
-//    override fun onSaveInstanceState(outState: Bundle) { // Here You have to save count value
-//        super.onSaveInstanceState(outState)
-//        Log.i("MyTag", "onSaveInstanceState")
-//
-//        outState.putInt("COUNT_KEY", text.text.toString().toInt())
-//    }
-//
-//    override fun onRestoreInstanceState(savedInstanceState: Bundle) { // Here You have to restore count value
-//        super.onRestoreInstanceState(savedInstanceState)
-//        Log.i("MyTag", "onRestoreInstanceState")
-//
-//        text.text = savedInstanceState.getInt("COUNT_KEY").toString()
-//    }
+    override fun onSaveInstanceState(outState: Bundle) { // Here You have to save count value
+        super.onSaveInstanceState(outState)
+        Log.i("MyTag", "onSaveInstanceState")
+
+        text  = findViewById(R.id.textView)
+        outState.putInt("COUNT_KEY", text.text.toString().toInt())
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) { // Here You have to restore count value
+        super.onRestoreInstanceState(savedInstanceState)
+        Log.i("MyTag", "onRestoreInstanceState")
+
+        text.text = savedInstanceState.getInt("COUNT_KEY").toString()
+    }
 }
