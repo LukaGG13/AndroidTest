@@ -27,6 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:background="?colorSecondary"
+            android:textColor="?colorOnSecondary"
             android:text="0" />
 
         <Button
@@ -49,6 +51,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
+            android:background="?colorSecondary"
+            android:textColor="?colorOnSecondary"
             android:text="Name" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
