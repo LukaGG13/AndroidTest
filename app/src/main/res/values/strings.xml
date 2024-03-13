@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Fit Runner</string>
+    <string name="up_button">UP</string>
+    <string name="down_button">DOWN</string>
+    <string name="name">NAME</string>
+    <string name="send">SEND</string>
 </resources>

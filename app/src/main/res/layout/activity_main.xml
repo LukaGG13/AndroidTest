@@ -48,14 +48,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="setOnClickListener1"
-            android:text="UP" />
+            android:text="@string/up_button" />
 
         <Button
             android:id="@+id/buttonDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="setOnClickListener2"
-            android:text="DOWN" />
+            android:text="@string/down_button" />
 
         <EditText
             android:id="@+id/plainTextName"
@@ -65,6 +65,7 @@
             android:inputType="text"
             android:background="?colorSecondary"
             android:textColor="?colorOnSecondary"
-            android:text="Name" />
+            android:hint="@string/name"
+            />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

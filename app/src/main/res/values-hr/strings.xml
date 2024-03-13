@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fit Runner</string>
+    <string name="up_button">GORE</string>
+    <string name="down_button">DOLJE</string>
+    <string name="name">IME</string>
+    <string name="send">POŠALJI</string>
+</resources>

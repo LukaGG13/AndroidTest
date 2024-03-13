@@ -1,6 +1,8 @@
 package com.example.androidtest
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -9,6 +11,7 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
@@ -96,8 +99,31 @@ class MainActivity : AppCompatActivity() {
                 text.text = "0"
                 true
             }
+
+            R.id.croatian -> {
+                changeLanguage(this,"hr")
+                recreate()
+                true
+            }
+
+            R.id.english-> {
+                changeLanguage(this,"en")
+                recreate()
+                true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
 
+    @Suppress("DEPRECATION")
+    fun changeLanguage(context: Context, language: String) {
+        Toast.makeText(applicationContext, "changeLanguage", Toast.LENGTH_SHORT).show()
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val res = context.resources
+        val config = Configuration(res.configuration)
+        config.setLocale(locale)
+        context.createConfigurationContext(config)
+        res.updateConfiguration(config, res.displayMetrics)
+    }
 }
