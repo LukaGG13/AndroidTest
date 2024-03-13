@@ -40,12 +40,22 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         Toast.makeText(applicationContext, "onPause", Toast.LENGTH_SHORT).show()
+        val sh = getSharedPreferences("mySharedPref", Context.MODE_PRIVATE)
+        val editor = sh.edit()
+        editor.putString("name", findViewById<TextView>(R.id.plainTextName).text.toString())
+        editor.putInt("count", text.text.toString().toInt())
+        editor.apply()
         Log.i("MyLog", "onPause")
     }
     override fun onResume() {
         super.onResume()
         Toast.makeText(applicationContext, "onResume", Toast.LENGTH_SHORT).show()
         Log.i("MyLog", "onResume")
+        val sh = getSharedPreferences("mySharedPref", Context.MODE_PRIVATE)
+        val name = sh.getString("name", "")
+        val count = sh.getInt("count", 0)
+        findViewById<TextView>(R.id.plainTextName).text = name
+        text.text = count.toString()
     }
     override fun onStop() {
         super.onStop()
@@ -62,7 +72,6 @@ class MainActivity : AppCompatActivity() {
 
     fun setOnClickListener1(view: View){
         Log.i("button","tipkica")
-
         val db = openOrCreateDatabase("myDB", Context.MODE_PRIVATE, null)
         var sql = "CREATE TABLE IF NOT EXISTS myTable (NAME TEXT, COUNT INT)"
         db.execSQL(sql)
