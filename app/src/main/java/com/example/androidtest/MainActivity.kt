@@ -62,7 +62,13 @@ class MainActivity : AppCompatActivity() {
 
     fun setOnClickListener1(view: View){
         Log.i("button","tipkica")
+
+        val db = openOrCreateDatabase("myDB", Context.MODE_PRIVATE, null)
+        var sql = "CREATE TABLE IF NOT EXISTS myTable (NAME TEXT, COUNT INT)"
+        db.execSQL(sql)
         text.text = (text.text.toString().toInt() + 1).toString()
+        sql = "INSERT INTO myTable (NAME, COUNT) VALUES ('${findViewById<TextView>(R.id.plainTextName).text}', ${text.text})"
+        db.execSQL(sql)
         if(text.text.toString().toInt() == 10){
             val myIntent = Intent(this, SuccessActivity::class.java).apply{
                 putExtra("name",findViewById<TextView>(R.id.plainTextName).text.toString())
