@@ -5,7 +5,19 @@
     android:id="@+id/id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/running_abstract"
     tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/myToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="start"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:ignore="MissingConstraints" />
 
     <LinearLayout
         android:id="@+id/LinearLayout"

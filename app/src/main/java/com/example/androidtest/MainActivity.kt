@@ -3,6 +3,8 @@ package com.example.androidtest
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -14,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.myToolbar))
         text  = findViewById(R.id.textView)
     }
     override fun onStart() {
@@ -46,6 +49,14 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(applicationContext, "onStop", Toast.LENGTH_SHORT).show()
         Log.i("MyLog", "onStop")
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        Toast.makeText(applicationContext, "onCreateOptionsMenu", Toast.LENGTH_SHORT).show()
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
     fun setOnClickListener1(view: View){
         Log.i("button","tipkica")
         text.text = (text.text.toString().toInt() + 1).toString()
@@ -78,4 +89,15 @@ class MainActivity : AppCompatActivity() {
 
         text.text = savedInstanceState.getInt("COUNT_KEY").toString()
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.restore_counter -> {
+                text.text = "0"
+                true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 }
