@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-
+import android.widget.RadioGroup
 class SuccessActivity : AppCompatActivity() {
     private lateinit var text : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +18,15 @@ class SuccessActivity : AppCompatActivity() {
     }
 
     fun sendClick(view: View) {
-        val uri: Uri = Uri.parse("smsto:003855194712541")
+        val numbersList = findViewById<RadioGroup>(R.id.numbersList)
+        val rbId = numbersList.getCheckedRadioButtonId()
+        val number = when (rbId) {
+            R.id.radioButton1 -> "2988408"
+            R.id.radioButton2 -> "9748129"
+            R.id.radioButton3 -> "4978944"
+            else -> "999999999"
+        }
+        val uri: Uri = Uri.parse("smsto:00385" + number)
         val intent = Intent(Intent.ACTION_SENDTO,uri)
         intent.putExtra("sms_body",text.text)
         startActivity(intent)
